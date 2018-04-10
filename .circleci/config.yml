@@ -1,0 +1,21 @@
+version: 2
+workflows:
+  version: 2
+  test:
+    jobs:
+      - python-3.6
+      - python-3.7
+jobs:
+  python-3.6: &base
+    docker:
+      - image: python:3.6-stretch
+    working_directory: /home/
+    steps:
+      - checkout
+      - run: python -m venv test-env
+      - run: test-env/bin/pip install . -r tests/requirements.txt
+      - run: test-env/bin/pytest --cov nta --cov-branch
+  python-3.7:
+    <<: *base
+    docker:
+      - image: python:3.7-rc-stretch
