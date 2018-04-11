@@ -1,5 +1,13 @@
 # Non True Awaitable
 
+## Installation:
+
+Python 3.6 or higher required.
+
+`pip install non-true-awaitable`
+
+## Description
+
 Awaitable objects in Python, such as coroutines, evaluate to `True` in Python.
 
 This can cause problems when a coroutine function returns a boolean value, especially if it is security critical, such as a coroutine function that checks a user password.
